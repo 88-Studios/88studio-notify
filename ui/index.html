@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>88Studio Notify</title>
+
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="./assets/api/vue.global.js"></script>
+    <script src="./assets/api/vuex.global.js"></script>
+
+</head>
+<body>
+    <v-app data-app >
+        <div id="app">
+            <div v-if="show.notify" class="absolute flex flex-col top-[10.4167vw] right-0 z-[9999] gap-y-[.3646vw]">
+                <div class="relative w-[13.2813vw] min-h-[3.3854vw] h-max flex items-center justify-center gap-x-[.2083vw]"
+                    v-for="notification in notifications" 
+                    :key="notification.id"
+                    :style="{ animation: `.5s forwards slideDown, .5s ${notification.time}s forwards slideUp` }">
+                    
+                    <div class="absolute left-0 top-0 w-[.1042vw] h-full" :style="{ backgroundColor: getColor(notification.type) }"></div>
+                    
+                    <div class="notify-bg shadow border-[.0313vw] border-[#2d2d2d]/20 w-[12.7604vw] min-h-[3.3854vw] h-max px-[.4688vw] py-[.3125vw] flex flex-col items-start justify-center">
+                        <div class="flex items-start justify-start gap-x-[.2604vw]">
+                            <img :src="getIcon(notification.type)" alt="icon" class="w-[1.25vw] h-[1.25vw]" />
+                            
+                            <div class="flex flex-col items-start">
+                                <p :style="{ color: `${getColor(notification.type)}` }" 
+                                    class="text-[.7292vw] font-semibold font-['Chakra-Petch-Semibold'] leading-[.5729vw] max-w-[10.3646vw]">
+                                    {{ notification.title }}
+                                </p>
+                                <p class="text-[#c3c3c3]/90 text-[.625vw] font-medium font-['Chakra-Petch-Medium'] leading-[.7292vw] max-w-[10.3646vw]">
+                                    {{ notification.message }}
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="w-[11.875vw] h-[.2083vw] bg-white/10 rounded-[.0521vw] mt-[.625vw]">
+                            <div id="progress" class="h-[.2083vw] rounded-[.0521vw]"
+                                :class="notification.isAnim ? 'w-[0vw]' : 'w-[11.875vw]'" 
+                                :style="{ transitionDuration: notification.time + 's', background: `${getColor(notification.type)}` }">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </v-app>
+
+    <script src="./index.js" type="module"></script>
+</body>
+</html>

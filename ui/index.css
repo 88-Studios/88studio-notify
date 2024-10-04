@@ -1,0 +1,59 @@
+body,
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+*,
+*:before,
+*:after {
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Chakra-Petch-Semibold';
+    src: url('./assets/fonts/ChakraPetch-SemiBold.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Chakra-Petch-Medium';
+    src: url('./assets/fonts/ChakraPetch-Medium.ttf');
+    font-weight: 500;
+}
+
+.notify-bg {
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+@keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+  
+@keyframes slideUp {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+}
+
+#progress {
+  transition-property: all;
+  transition-timing-function: linear;
+  box-shadow: 0px 0px 10px #64EE3A;
+}
